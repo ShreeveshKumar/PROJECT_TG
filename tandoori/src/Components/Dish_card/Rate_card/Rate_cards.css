@@ -1,0 +1,15 @@
+
+.rate_card_home {
+  border: 2px dashed black;
+  padding: 15px;
+  width: 50%;
+  margin: 15px;
+}
+
+.rate_card_zoo {
+  /* background-color: red */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media screen and (width<=769px) {
+  .arrange_order {
+    font-size: 10px;
+  }
+
+  .mode_title,
+  .mode1 {
+    font-size: 20px;
+  }
+
+}
