@@ -13,14 +13,17 @@ import Admin from "./pages/Admin/Admin";
 import DelieverType from "./pages/Deliever/Delivery";
 import Confirm from "./pages/Confirm/Confirm";
 import Error from "./pages/Error/Error";
-
+import {Provider} from 'react-redux'
+import { store } from "./store/store";
 
 
 const App = () => {
   return (
     <React.Fragment>
       <Router>
-        <Rat />
+        <Provider store={store}>
+          <Rat />
+        </Provider>
       </Router>
     </React.Fragment>
   );
