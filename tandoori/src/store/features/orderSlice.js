@@ -1,9 +1,11 @@
 //this folder is named order because order is one of its feature 
 import { createSlice } from "@reduxjs/toolkit";
+import { food_order } from "../../data";
 
 
 const initialState = {
-    amount: 0,
+    food:food_order,
+    amount: 2,
     total:0
 }
 

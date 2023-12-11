@@ -4,13 +4,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import Navbar from "../../Components/Navbar/Navbar";
 import { OrderDish } from "../../data";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import DishOrder from "../../Components/Dish_order/DishOrder";
+import { food_order } from "../../data";
 
 const Order = () => {
   return (
     <div>
       <Navbar />
       <Order_search />
-      {/* <OrderTake /> */}
       <DishDrop />
       <OrderBar />
     </div>
@@ -18,28 +21,25 @@ const Order = () => {
 };
 
 const Order_search = () => {
+  const amount = useSelector((store) => store.bc.amount);
+
   return (
-    <span className="flex justify-center dish_search">
+    <span className="flex justify-center dish_search ">
       <span>
         <input
           type="text"
           name=""
           id="dish_input"
           placeholder="Search by dish name..."
+          className="p-10 "
         />
         <SearchIcon />
       </span>
+      <span className="flex place-item-end">
+        <ShoppingBasketIcon />
+        {amount}
+      </span>
     </span>
-  );
-};
-
-const OrderTake = () => {
-  return (
-    <div>
-      <div className="boxes_of_dish"></div>
-      <div className="boxes_of_dish"></div>
-      <div className="boxes_of_dish"></div>
-    </div>
   );
 };
 
@@ -70,74 +70,42 @@ const DishDrop = () => {
     rc_num: rc,
   };
 
+  const amount = useSelector((store) => store.bc.amount);
+  console.log(amount);
+
   // const handleorder = () => {
-    //   fetch(linking, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Origin": "*",
-    //     },
-    //     body: JSON.stringify(Order),
-    //   }).catch((err) => {
-    //     console.log(err);
-    //   });
-    // };
+  //   fetch(linking, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Access-Control-Allow-Origin": "*",
+  //     },
+  //     body: JSON.stringify(Order),
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   });
+  // };
+
+  if (amount < 1) {
     return (
-      <div className="flex flex-col ">
-        <div className="flex flex-wrap content-center justify-between p-10 mx-20 my-5 border-2 font-comfortaa border-slate-950 ">
-          <span>Butter Chicken</span>
-          <div className="flex justify-between">
-            <button type="button" onClick={() => setbc(bc + 1)} className="">
-              ➕
-            </button>
-            {bc}
-            <button type="button" onClick={() => setbc(bc - 1)}>
-              ➖
-            </button>
-          </div>
-        </div>
-
-        <div>
-          <div className="flex flex-wrap content-center  justify-between p-10 mx-20 my-5 border-2 font-comfortaa border-slate-950 ">
-            <span>Roasted Chicken</span>
-            <div className="flex justify-between ">
-              <button type="button" onClick={() => setrc(rc + 1)}>
-                ➕
-              </button>
-              {rc}
-              <button type="button" onClick={() => setrc(rc - 1)}>
-                ➖
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="flex flex-wrap content-center  justify-between p-10 mx-20 my-5 border-2 font-comfortaa border-slate-950 ">
-            <span>Changezi Chicken</span>
-            <div className="flex justify-between ">
-              <button type="button" onClick={() => setcc(cc + 1)}>
-                ➕
-              </button>
-              {cc}
-              <button type="button" onClick={() => setcc(cc - 1)}>
-                ➖
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-center ">
-            <button
-              type="button"
-              // onClick={() => handleorder()}
-              className="bg-black px-5 py-3 rounded-md text-white"
-            >
-              Clear
-            </button>
-          </div>
-        </div>
+      <div className="flex flex-col flex-wrap justify-center items-center text-3xl my-5">
+        <h1>Your Bag</h1>
+        <h2>IS EMPTY </h2>
       </div>
-    );
-  };
-// };
+    )
+  }
+
+  return (
+    <div>
+      {food_order.map((gru,index) => {
+          return <DishOrder key={gru.index} name={gru.name} amount={gru.amount} />
+        })
+      }
+    </div>
+  )
+}
+
+
+
 
 export default Order;

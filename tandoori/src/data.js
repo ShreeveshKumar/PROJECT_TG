@@ -103,5 +103,39 @@ const Deliver_question = [
 ];
 
 
+const food_order = [
+  {
+    index: 1,
+    name: "Butter Chicken",
+    amount: 0,
+  },
+  {
+    index: 2,
+    name: "Afghani Chicken",
+    amount: 0,
+  },
+  {
+    index: 3,
+    name: "Chicken Curry",
+    amount: 0,
+  },
+  {
+    index: 4,
+    name: "Chicken Changezi",
+    amount: 0,
+  },
+  {
+    index: 5,
+    name: "Chicken fry",
+    amount: 0,
+  },
+  {
+    index: 6,
+    name: "Chicken Tikka",
+    amount: 0,
+  }
+];
 
-module.exports = { apetite, best_review,vary_reviews,OrderDish,Deliver_question };
+
+
+module.exports = { apetite, best_review,vary_reviews,OrderDish,Deliver_question,food_order };

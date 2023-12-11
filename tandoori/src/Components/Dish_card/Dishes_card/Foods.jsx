@@ -12,7 +12,7 @@ function Foods({ index, name, description,source }) {
       <div className=" text-md food_visual_part2">
         <h1 className="font-bold text-xl">Food name:{name}</h1>
         <h2 className="font-semibold text-lg">Food details: {description}</h2>
-      </div>
+      </div>  
     </div>
   );
 }
