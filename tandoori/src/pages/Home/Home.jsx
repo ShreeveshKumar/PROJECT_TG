@@ -6,8 +6,6 @@ import Footer from "../../Components/Footer/Footer";
 import Foods from "../../Components/Dish_card/Dishes_card/Foods";
 import Rate_cards from "../../Components/Dish_card/Rate_card/Rate_cards";
 import { Link } from "react-router-dom";
-// import { navposter } from '../../data';
-import RatePanel from "../../Components/Rate_panel/RatePanel";
 
 const Home = () => {
   return (
@@ -47,7 +45,7 @@ function Body() {
 function Menu() {
   return (
     <div className=" border-0 mt-12 p-10 border-slate-900 menu_element1 md:p-0 ">
-      <h1 className="flex items-center justify-center text-4xl font-comfortaa ">
+      <h1 className="flex items-center justify-center text-4xl font-Textpos1">
         MENU
       </h1>
       <section className="flex flex-wrap justify-evenly">
@@ -72,7 +70,6 @@ function NewRate() {
       <h1 className="flex text-5xl font-comfortaa items-center justify-center">
         Ratings
       </h1>
-      <RatePanel />
       <div className="flex flex-col font-comfortaa font-bold">
         {vary_reviews.map((readme) => {
           return <Rate_cards key={readme.index} ratings={readme.view} />;
@@ -86,11 +83,11 @@ function Vdish({ index, review, source2 }) {
   return (
     <div>
       <div
-        className="text-2xl flex flex-wrap m-5 items-center place-content-evenly"
+        className="text-2xl flex flex-wrap flex-col m-5 items-center place-content-evenly"
         key={index}
       >
-        <span className="w-1/2 ">{review}</span>
-        <span>
+        
+        <span className=" ">
           <img
             src={source2}
             alt="image_not_found"
@@ -100,22 +97,27 @@ function Vdish({ index, review, source2 }) {
             loading="lazy"
           />
         </span>
+        <span className=" ">{review}</span>
+
       </div>
+        
+
     </div>
   );
 }
 
 function Bdish() {
   return (
-    <div className="flex flex-col items-center p-10 ">
+    <div className="">
       <h1 className="text-5xl font-comfortaa ">Best FOODS</h1>
-      <div>
+      <div className="flex flex-row flex-wrap justify-evenly md:p-5 sm:p-5  ">
         {best_review.map((frog) => {
           return (
-            <Vdish
+            <Foods
               key={frog.index}
-              review={frog.review}
-              source2={frog.source2}
+              name={frog.name}
+              description={frog.review}
+              source={frog.source2}
             />
           );
         })}

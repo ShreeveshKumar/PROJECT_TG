@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         comfortaa: ["Comfortaa", "sans-serif"],
+        Textpos1:["Indie Flower","sans-serif"],
 
       },
       colors: {

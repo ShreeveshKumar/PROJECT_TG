@@ -35,6 +35,7 @@ const apetite = [
 const best_review = [
   {
     index:1,
+    name:"Butter Chicken",
     review:
       "Tandoori Gali restaurant ka Butter Chicken, maza aagaya! Iske swaad mein hai ek khaas magic, dil se bhar kar khaya maine.",
     source2:
@@ -42,6 +43,7 @@ const best_review = [
   },
   {
     index:2,
+    name:"Shahi Paneer",
     review:
       "Tandoori Gali restaurant ki Khadhai Paneer, dil ko choo gayi! Uski masaledar khushboo aur swaad, lajawaab hai, fir se khane ka mann kar raha hai.",
     source2:

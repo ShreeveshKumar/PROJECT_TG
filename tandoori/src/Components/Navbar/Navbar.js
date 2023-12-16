@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { Icon1 } from "../../Icons";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -31,7 +32,7 @@ const Navbar = () => {
 
       <div className="md:hidden absolute top-16 right-5 z-50">
         <button className="text-2xl" onClick={toggleMenu}>
-          ☰
+          <Icon1 />
         </button>
         {showMenu && (
           <div className="bg-white flex flex-col gap-4 font-bold absolute top-16 right-5 z-40">

@@ -50,18 +50,18 @@ const ContactAddress = () => {
   };
 
   return (
-    <div className="flex flex-col items-center text-3xl font-bold gap-y-5 font-comfortaa">
-      <h1 className="text-6xl"> Contact us ... </h1>
+    <div className="flex flex-col items-center text-xl font-bold gap-y-5 font-comfortaa md:text-lg sm:text-sm ">
+      <h4 className="text-xl"> Contact us ... </h4>
 
-      <h1>Abhishek Chaudhary</h1>
+      <h3>Abhishek Chaudhary</h3>
 
-      <h1> 7060139557</h1>
+      <h3> 7060139557</h3>
 
-      <h1>Rahul Yadav</h1>
+      <h3>Rahul Yadav</h3>
 
-      <h1>7017224627</h1>
+      <h3>7017224627</h3>
 
-      <h1> enter your email </h1>
+      <h3> enter your email </h3>
       <input
         type="email"
         name="email"
@@ -73,7 +73,7 @@ const ContactAddress = () => {
         className="border-2 border-blue-800"
       />
 
-      <h1>write your message</h1>
+      <h3>write your message</h3>
 
       <input
         type="text"
