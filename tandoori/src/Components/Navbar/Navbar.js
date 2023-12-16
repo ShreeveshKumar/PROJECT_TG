@@ -5,36 +5,50 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleMenuToggle = () => {
+  const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
-    <div className="nav_bar">
-      <section className="nav_bar1">
+    <div className="flex flex-wrap justify-between m-5 p-10 font-comfortaa text-xl relative align-middle">
+      <section className="">
         <Link to="/">
-          <button className="nav_element1">Tandoori Gali</button>
+          <button className="text-2xl font-extrabold p-2">Tandoori Gali</button>
         </Link>
       </section>
-      <button className="hamburger_icon" onClick={handleMenuToggle}>
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </button>
-      <section className={`nav_bar2 ${showMenu ? "active" : ""}`}>
+
+      <section className="hidden md:flex flex-wrap gap-10 font-bold ">
         <Link to="/About">
-          <button className="nav_element3">About us</button>
+          <button className="p-2">About us</button>
         </Link>
         <Link to="/Contact">
-          <button className="nav_element4">Contact</button>
+          <button className="p-2">Contact</button>
         </Link>
         <Link to="/Order">
-          <button className="nav_element5">Order now</button>
+          <button className="bg-black p-2 rounded-lg text-white">Order now</button>
         </Link>
       </section>
+
+      <div className="md:hidden absolute top-16 right-5 z-50">
+        <button className="text-2xl" onClick={toggleMenu}>
+          ☰
+        </button>
+        {showMenu && (
+          <div className="bg-white flex flex-col gap-4 font-bold absolute top-16 right-5 z-40">
+            <Link to="/About">
+              <button className="p-2">About us</button>
+            </Link>
+            <Link to="/Contact">
+              <button className="p-2">Contact</button>
+            </Link>
+            <Link to="/Order">
+              <button className="bg-black p-2 rounded-lg text-white">Order now</button>
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
-
 
 export default Navbar;
