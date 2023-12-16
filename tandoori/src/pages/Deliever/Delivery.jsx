@@ -41,7 +41,6 @@ const Deliver_Address = () => {
           <button
             type="button"
             className="bg-black py-2 px-4 rounded-md text-white order_deliver_button"
-            // disabled={place}
           >
             Next
           </button>

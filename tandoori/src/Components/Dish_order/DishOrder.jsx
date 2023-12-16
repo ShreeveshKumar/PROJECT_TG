@@ -4,7 +4,7 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 
 const DishOrder = ({index,name,amount}) => {
   return (
-    <div className="flex mx-40 p-10 justify-between my-5 rounded-md border-2 border-slate-900" key={index}>
+    <div className="flex mx-40 p-10 justify-between my-5 rounded-xl  border-2 border-slate-900" key={index}>
           <h1>{name}</h1>
       <div>
         <button type="button">

@@ -27,8 +27,8 @@ const apetite = [
     name: "Shahi Paneer",
     description:
       "Raw paneer dipped into the flavourful gravy, you will love them ",
-    source:
-      "https://live.staticflickr.com/2890/9536501964_3c20a65438_h.jpg?quality=auto&format=webp",
+    source:""
+      // "https://live.staticflickr.com/2890/9536501964_3c20a65438_h.jpg?quality=auto&format=webp",
   },
 ];
 
@@ -136,6 +136,9 @@ const food_order = [
   }
 ];
 
+const navposter = [{
+  image:"./src/assets/poster.jpg"
+}]
 
 
-module.exports = { apetite, best_review,vary_reviews,OrderDish,Deliver_question,food_order };
+module.exports = { apetite, best_review,vary_reviews,OrderDish,Deliver_question,food_order,navposter };

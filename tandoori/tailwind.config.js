@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         comfortaa: ["Comfortaa", "sans-serif"],
+
       },
       colors: {
         'poster_color':'#FFCA60'

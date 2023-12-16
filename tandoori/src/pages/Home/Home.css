@@ -1,34 +1,11 @@
+/* Your CSS file or inline styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-.background_img {
-  display: inline-block;
-  background-repeat: no-repeat;
-  border: 2px solid black;
-  border-radius: 5px;
-}
-.header_backimg {
-  background-image: url("../../assets/headerimage.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  justify-content: center;
-  align-items: center;
-  height: fit-content;
-  width: fit-content;
-  height: 300px;
-  width: 300px;
-}
-
-@media screen and (width<=769px) {
-  .Vdish_style {
-    font-size: 20px;
-  }
-
-  .best_dish_design {
-    height: 200px;
-    width: 100px;
-  }
+.navbarposter {
+  background-image: url("../../assets/poster.webp");
+  background-size: contain; /* Adjust the background size to contain the entire image */
+  background-position: center; /* Center the background image */
+  /* Add other styles for your navbar */
 }

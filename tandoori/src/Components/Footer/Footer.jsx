@@ -10,10 +10,10 @@ function Footer() {
         allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className="w-1/3 h-96 "
+        className="lg:w-2/5 sm:3/5 h-96"
         title="tandoori_gali"
       />
-      <span className="w-1/2 ">
+      <span className="lg:w-2/5   ">
         <h1 className="">Tandoori gali ❣️</h1>
         <h2>
           Shop No. 1, Delhi-Meerut Road, Muradnagar, Radhey Shyam Vihar Phase 4,
