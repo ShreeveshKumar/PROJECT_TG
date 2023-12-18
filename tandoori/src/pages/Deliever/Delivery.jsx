@@ -26,12 +26,12 @@ const Deliver_Address = () => {
       <div className="flex flex-wrap text-md font-bold  place-content-evenly font-comfortaa arrange_order">
         <div className="m-5">
           {Deliver_question.map((foog) => {
-            return <DeliverHere name={foog.name} />;
+            return <DeliverHere name={foog.name} key={foog.index} />;
           })}
         </div>
         <div className="m-5">
           <h1>Select Mode of Payment</h1>
-          <input type="radio" name="cash" id=""  />
+          <input type="radio" name="cash" id="" />
           <label htmlFor="cash">Cash on Delivery </label>
         </div>
       </div>
@@ -50,11 +50,16 @@ const Deliver_Address = () => {
   );
 };
 
-const DeliverHere = ({ name }) => {
+const DeliverHere = ({ name, index }) => {
   return (
-    <div className="flex m-2 gap-4 font-comfortaa deliver_letter">
-        <h1>{name}:</h1>
-        <input type="text" placeholder={name} required className="border-3 border-black expandable-textarea" />
+    <div className="flex m-2 gap-4 font-comfortaa deliver_letter" key={index}>
+      <h1>{name}:</h1>
+      <input
+        type="text"
+        placeholder={name}
+        required
+        className="border-3 border-black expandable-textarea"
+      />
     </div>
   );
 };

@@ -27,31 +27,29 @@ const apetite = [
     name: "Shahi Paneer",
     description:
       "Raw paneer dipped into the flavourful gravy, you will love them ",
-    source:""
-      // "https://live.staticflickr.com/2890/9536501964_3c20a65438_h.jpg?quality=auto&format=webp",
+    source: "",
+    // "https://live.staticflickr.com/2890/9536501964_3c20a65438_h.jpg?quality=auto&format=webp",
   },
 ];
 
 const best_review = [
   {
-    index:1,
-    name:"Butter Chicken",
+    index: 1,
+    name: "Butter Chicken",
     review:
       "Tandoori Gali restaurant ka Butter Chicken, maza aagaya! Iske swaad mein hai ek khaas magic, dil se bhar kar khaya maine.",
     source2:
       "https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Butter_Chicken.jpg",
   },
   {
-    index:2,
-    name:"Shahi Paneer",
+    index: 2,
+    name: "Shahi Paneer",
     review:
       "Tandoori Gali restaurant ki Khadhai Paneer, dil ko choo gayi! Uski masaledar khushboo aur swaad, lajawaab hai, fir se khane ka mann kar raha hai.",
     source2:
       "https://upload.wikimedia.org/wikipedia/commons/7/72/Kadhai_paneer.jpg",
   },
 ];
-
-
 
 const vary_reviews = [
   {
@@ -72,38 +70,24 @@ const vary_reviews = [
   },
 ];
 
-
-const OrderDish = [
-  {
-    name: 'Butter Chicken',
-    code: 'bc',
-  },
-  {
-    name: 'Roasted Chicken',
-    code: 'rc',
-  },
-  {
-    name: "Changezi Chicken",
-    code: 'cc',
-  },
-];
-
-
 const Deliver_question = [
   {
+    index: 1,
     name: "Enter your name",
   },
   {
-    name:'Enter your Mobile No'
+    index: 2,
+    name: "Enter your Mobile No",
   },
   {
-    name: 'Enter your House No / Locality ',
+    index: 3,
+    name: "Enter your House No / Locality ",
   },
   {
-    name:'Enter your full Address'
-  }
+    index: 4,
+    name: "Enter your full Address",
+  },
 ];
-
 
 const food_order = [
   {
@@ -135,12 +119,21 @@ const food_order = [
     index: 6,
     name: "Chicken Tikka",
     amount: 0,
-  }
+  },
 ];
 
-const navposter = [{
-  image:"./src/assets/poster.jpg"
-}]
+const navposter = [
+  {
+    image: "./src/assets/poster.jpg",
+  },
+];
 
-
-module.exports = { apetite, best_review,vary_reviews,OrderDish,Deliver_question,food_order,navposter };
+module.exports = {
+  apetite,
+  best_review,
+  vary_reviews,
+  OrderDish,
+  Deliver_question,
+  food_order,
+  navposter,
+};
