@@ -132,7 +132,6 @@ module.exports = {
   apetite,
   best_review,
   vary_reviews,
-  OrderDish,
   Deliver_question,
   food_order,
   navposter,
