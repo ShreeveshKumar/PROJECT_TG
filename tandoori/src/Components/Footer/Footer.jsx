@@ -1,5 +1,7 @@
 import React from "react";
 import "./Footer.css";
+import { Icon3 } from "../../Icons";
+
 
 function Footer() {
   return (
@@ -20,7 +22,7 @@ function Footer() {
           Ghaziabad, Uttar Pradesh 201206
         </h2>
 
-        <h3 className="footer_phone">7060139557, 7017224627</h3>
+        <h3 className="footer_phone"> <Icon3 />7060139557, 7017224627</h3>
         <h4>Made by Shreevesh Kumar with 💓</h4>
       </span>
     </div>

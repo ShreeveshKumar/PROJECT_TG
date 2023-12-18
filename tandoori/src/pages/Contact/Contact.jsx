@@ -25,28 +25,34 @@ const ContactAddress = () => {
       message: message,
     };
 
-    document.querySelector('#input_email').value = " ";
-    document.querySelector("#input_message").value = " ";
+    var x = document.querySelector("#input_email").value.trim();
+    var y = document.querySelector("#input_message").value.trim();
 
-
-
-    fetch(linking, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
+    if (x.trim() === " " && y.trim() === " ") {
+      alert("pls write something ");
+      return;
+    } else {
+      fetch(linking, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data),
       })
-      .catch((err) => {
-        console.log(err);
-      });
-    alert("message sent successfully");
-    console.log("message sent successfully");
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      alert("message sent successfully");
+      console.log("message sent successfully");
+    }
+
+    document.querySelector("#input_email").value = " ";
+    document.querySelector("#input_message").value = " ";
   };
 
   return (
