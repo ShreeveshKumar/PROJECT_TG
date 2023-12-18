@@ -25,6 +25,11 @@ const ContactAddress = () => {
       message: message,
     };
 
+    document.querySelector('#input_email').value = " ";
+    document.querySelector("#input_message").value = " ";
+
+
+
     fetch(linking, {
       method: "POST",
       headers: {
@@ -36,15 +41,10 @@ const ContactAddress = () => {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        // if(response.status == 200){
-        //   alert('success');
-        // }
       })
       .catch((err) => {
         console.log(err);
       });
-
-    // alert('message sent successfully ')
     alert("message sent successfully");
     console.log("message sent successfully");
   };
