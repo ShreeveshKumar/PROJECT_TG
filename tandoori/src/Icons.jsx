@@ -55,7 +55,7 @@ export const Icon3 = () => {
       />
     </svg>
   );
-}
+}   
 
 
 export const Icon4 = () => {
@@ -66,7 +66,7 @@ export const Icon4 = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      dataSlot="icon"
+      dataslot="icon"
       className="w-6 h-6 inline bold"
     >
       <path
