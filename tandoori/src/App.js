@@ -15,6 +15,7 @@ import Confirm from "./pages/Confirm/Confirm";
 import Error from "./pages/Error/Error";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import Login from "./pages/Login/Login";
 
 const App = () => {
   return (
@@ -39,7 +40,11 @@ function Rat() {
       <Route exact path="/Order/Deliver" element={<DelieverType />} />
       <Route exact path="/Order/Admin" element={<Admin />} />
       <Route exact path="/order/Deliver/Confirm" element={<Confirm />} />
+      <Route exact path="/Login" element={<Login />} />
+      <Route exact path="/admin-panel" element={<Admin />} />
+
       <Route exact path="*" element={<Error />} />
+
     </Routes>
   );
 }

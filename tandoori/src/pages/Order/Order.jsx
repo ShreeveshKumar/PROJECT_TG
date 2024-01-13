@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Order.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Navbar from "../../Components/Navbar/Navbar";
-import { OrderDish } from "../../data";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import DishOrder from "../../Components/Dish_order/DishOrder";
 import { food_order } from "../../data";
 import { Icon2 } from "../../Icons";
+// import { state } from "../../store/store";
+
+
+// const socket = io('https://localhost:4000');
+
 
 const Order = () => {
   return (
@@ -22,7 +24,7 @@ const Order = () => {
 };
 
 const Order_search = () => {
-  const amount = useSelector((store) => store.bc.amount);
+  // const 
 
   return (
     <span className="flex justify-center  ">
@@ -37,19 +39,22 @@ const Order_search = () => {
         <SearchIcon />
       </span>
       <span className="flex place-item-end">
-       <Icon2 /> {amount}
+       <Icon2 /> 0
       </span>
     </span>
   );
 };
 
+
+
 const OrderBar = () => {
   return (
     <React.Fragment>
       <div className="flex inset-x-0 bottom-0 fixed align-middle justify-center  ">
-        <Link to="/Order/Admin" className="flex flex-wrap justify-center w-1/2 bg-yellow-400 text-black p-5">
-          <button className="">Clear</button>
-        </Link>
+        <div className="flex flex-wrap justify-center w-1/2 bg-yellow-400 text-black p-5">
+          <button className="" onClick={() => {
+          }}>Clear</button>
+        </div>
         <Link to="/Order/Deliver" className="flex flex-wrap w-1/2 justify-center align-middle text-black bg-sky-500 p-5">
           <button className="">Proceed</button>
         </Link>
@@ -58,20 +63,9 @@ const OrderBar = () => {
   );
 };
 
-const linking = "http://localhost:4000";
 
 const DishDrop = () => {
-  const [bc, setbc] = useState(0);
-  const [rc, setrc] = useState(0);
-  const [cc, setcc] = useState(0);
-
-  const Order = {
-    bc_num: bc,
-    rc_num: rc,
-  };
-
-  const amount = useSelector((store) => store.bc.amount);
-  console.log(amount);
+ 
 
   // const handleorder = () => {
   //   fetch(linking, {
@@ -86,14 +80,14 @@ const DishDrop = () => {
   //   });
   // };
 
-  if (amount < 1) {
-    return (
-      <div className="flex flex-col flex-wrap justify-center items-center text-3xl my-5">
-        <h1>Your Bag</h1>
-        <h2>IS EMPTY </h2>
-      </div>
-    )
-  }
+  // if (amount < 1) {
+  //   return (
+  //     <div className="flex flex-col flex-wrap justify-center items-center text-3xl my-5">
+  //       <h1>Your Bag</h1>
+  //       <h2>IS EMPTY </h2>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="p-3 mb-20">

@@ -1,11 +1,13 @@
 import React from "react";
 import "./Home.css";
 import Navbar from "../../Components/Navbar/Navbar";
-import { apetite, best_review, vary_reviews } from "../../data";
+import { apetite_nonveg, best_review, vary_reviews } from "../../data";
 import Footer from "../../Components/Footer/Footer";
 import Foods from "../../Components/Dish_card/Dishes_card/Foods";
 import Rate_cards from "../../Components/Dish_card/Rate_card/Rate_cards";
 import { Link } from "react-router-dom";
+import { apetite_veg } from "../../data";
+import BestFood from "../../Components/Dish_card/BestFood/BestFood";
 
 const Home = () => {
   return (
@@ -24,7 +26,7 @@ function Body() {
   return (
     <div>
       <div className="flex p-8 mt-10 bg-yellow-500 k text-white align-middle justify-center place-content-center">
-        <h3 className="px-2 py-2">
+        <h3 className="px-2 py-2 text-black">
           LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN
         </h3>
         <Link to="/Order">
@@ -37,19 +39,43 @@ function Body() {
           </button>
         </Link>
       </div>
-      <div className="navbarposter h-64 bg-cover bg-center"></div>
+      <div className="flex flex-wrap justify-evenly overflow-hidden">
+        <div className="flex align-middle justify-center font-bold font-comfortaa text-xl ">
+          <h1> The best food of Town is here</h1>
+        </div>
+        <div className="w-96">
+          <img
+            src="https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg"
+            alt="images_here"
+          />
+        </div>
+      </div>
     </div>
   );
 }
 
 function Menu() {
   return (
-    <div className=" border-0 mt-12 p-10 border-slate-900 menu_element1 md:p-0 ">
+    <div className=" border-0 mt-12 p-10 border-slate-900 menu_element1 md:p-0 mb-5 ">
       <h1 className="flex items-center justify-center text-4xl font-Textpos1">
         MENU
       </h1>
-      <section className="flex flex-wrap justify-evenly">
-        {apetite.map((fooog) => {
+      <h1>Veg</h1>
+      <section className="flex flex-wrap justify-evenly overflow-hidden">
+        {apetite_veg.map((fooog) => {
+          return (
+            <Foods
+              key={fooog.index}
+              name={fooog.name}
+              description={fooog.description}
+              source={fooog.source}
+            />
+          );
+        })}
+        </section>
+      <h1>Non-Veg</h1>
+      <section className="flex flex-wrap justify-evenly overflow-hidden">
+        {apetite_nonveg.map((fooog) => {
           return (
             <Foods
               key={fooog.index}
@@ -110,18 +136,18 @@ function Bdish() {
   return (
     <div className="">
       <h1 className="text-5xl font-comfortaa ">Best FOODS</h1>
-      <div className="flex flex-row flex-wrap justify-evenly md:p-5 sm:p-5  ">
+      <section>
         {best_review.map((frog) => {
           return (
-            <Foods
+            <BestFood
               key={frog.index}
               name={frog.name}
-              description={frog.review}
-              source={frog.source2}
+              image={frog.source2}
+              description={frog.description}
             />
           );
         })}
-      </div>
+      </section>
     </div>
   );
 }

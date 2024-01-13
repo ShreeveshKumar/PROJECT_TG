@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Delivery.css";
-import { Button } from "@mui/material";
 import { Deliver_question } from "../../data";
 import { Link } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
@@ -16,7 +15,7 @@ const Delivery = () => {
   );
 };
 
-const Deliver_Address = () => {
+const Deliver_Address = ({ name, index }) => {
   const [place, setplace] = useState(true);
   const [sum, setsum] = useState(false);
 
@@ -32,7 +31,7 @@ const Deliver_Address = () => {
         <div className="m-5">
           <h1>Select Mode of Payment</h1>
           <input type="radio" name="cash" id="" />
-          <label htmlFor="cash">Cash on Delivery </label>
+          <label htmlFor="cash" className="">Cash on Delivery </label>
         </div>
       </div>
 

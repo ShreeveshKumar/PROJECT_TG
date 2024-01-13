@@ -1,11 +1,9 @@
-const apetite = [
+const apetite_nonveg = [
   {
     index: 1,
     name: "Tandoori Chicken",
     description:
       "roasted chicken flavoured with raw cooking and that flavour of crisp chicken",
-    source:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Tandoori_chicken_laccha_piyaz1_%2836886283595%29.jpg/1200px-Tandoori_chicken_laccha_piyaz1_%2836886283595%29.jpg?quality=auto&format=webp",
   },
   {
     index: 2,
@@ -32,6 +30,34 @@ const apetite = [
   },
 ];
 
+
+const apetite_veg = [
+  {
+    index: 1,
+    name: "Tandoori Chicken",
+    description:
+      "roasted chicken flavoured with raw cooking and that flavour of crisp chicken",
+  },
+  {
+    index: 2,
+    name: "Tandoori Chicken",
+    description:
+      "roasted chicken flavoured with raw cooking and that flavour of crisp chicken",
+  },
+  {
+    index: 3,
+    name: "Tandoori Chicken",
+    description:
+      "roasted chicken flavoured with raw cooking and that flavour of crisp chicken",
+  },
+  {
+    index: 4,
+    name: "Tandoori Chicken",
+    description:
+      "roasted chicken flavoured with raw cooking and that flavour of crisp chicken",
+  },
+];
+
 const best_review = [
   {
     index: 1,
@@ -39,7 +65,8 @@ const best_review = [
     review:
       "Tandoori Gali restaurant ka Butter Chicken, maza aagaya! Iske swaad mein hai ek khaas magic, dil se bhar kar khaya maine.",
     source2:
-      "https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Butter_Chicken.jpg",
+      "https://www.cookwithkushi.com/wp-content/uploads/2016/07/best_butter_chicken_murgh_makhani_recipe.jpg",
+    description: "this is  a wonderful dish and i love it personally ",
   },
   {
     index: 2,
@@ -47,7 +74,8 @@ const best_review = [
     review:
       "Tandoori Gali restaurant ki Khadhai Paneer, dil ko choo gayi! Uski masaledar khushboo aur swaad, lajawaab hai, fir se khane ka mann kar raha hai.",
     source2:
-      "https://upload.wikimedia.org/wikipedia/commons/7/72/Kadhai_paneer.jpg",
+      "https://www.sanjanafeasts.co.uk/wp-content/uploads/2020/01/Restaurant-Style-Shahi-Paneer.jpg",
+    description: "this is  a wonderful dish and i love it personally ",
   },
 ];
 
@@ -93,32 +121,26 @@ const food_order = [
   {
     index: 1,
     name: "Butter Chicken",
-    amount: 0,
   },
   {
     index: 2,
     name: "Afghani Chicken",
-    amount: 0,
   },
   {
     index: 3,
     name: "Chicken Curry",
-    amount: 0,
   },
   {
     index: 4,
     name: "Chicken Changezi",
-    amount: 0,
   },
   {
     index: 5,
     name: "Chicken fry",
-    amount: 0,
   },
   {
     index: 6,
     name: "Chicken Tikka",
-    amount: 0,
   },
 ];
 
@@ -129,7 +151,8 @@ const navposter = [
 ];
 
 module.exports = {
-  apetite,
+  apetite_nonveg,
+  apetite_veg,
   best_review,
   vary_reviews,
   Deliver_question,

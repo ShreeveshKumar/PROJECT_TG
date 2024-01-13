@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
+import Footer from "../../Components/Footer/Footer"; 
+// const result = require("dotenv").config();
+// console.log(result);
+
+
 
 const Contact = () => {
   return (
@@ -9,11 +13,13 @@ const Contact = () => {
       <Navbar />
       <ContactAddress />
       <Footer />
-    </div>
+    </div>    
   );
-};
+};  
 
-const linking = "http://localhost:4000";
+
+const linking = "http://localhost:4000/Contact";
+console.log(linking);
 
 const ContactAddress = () => {
   const [email, setemail] = useState(" ");
@@ -81,7 +87,7 @@ const ContactAddress = () => {
 
       <h3>write your message</h3>
 
-      <input
+      <textarea
         type="text"
         name="message"
         id="input_message"
