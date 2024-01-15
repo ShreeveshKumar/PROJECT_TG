@@ -8,8 +8,6 @@ const Router = require("./router/Router");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 
-
-
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -23,7 +21,6 @@ require("./DB/connection");
 
 app.use(cookieParser());
 
-
 app.get("/", Router);
 
 app.post("/register", Router); // for the registration of admin
@@ -33,6 +30,5 @@ app.post("/login", Router); // for the authentication of admin
 app.post("/Contact", Router); // for the contact page and sending the mail and message to the database
 
 app.get("/Admin", Router); // for the admin page and sending the data to the database
-
 
 app.listen(PORT);
