@@ -3,20 +3,17 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const Admin = require("../UserSchema");
+const cookieParser = require("cookie-parser");
 
-// HandleUser.methods.generateAuthToken = async function () {
-//   try {
-//     let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
-//     this.tokens = this.tokens.concat({ token: token });
-//     await this.save();
-//     return token;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+router.use(cookieParser());
 
-// const Admin = mongoose.model("Check", HandleUser);
+const HandleUser = mongoose.Schema({
+  id: String,
+  password: String,
+  tokens: String,
+});
+
+const Admin = mongoose.model("Check", HandleUser);
 
 const object2 = new mongoose.Schema({
   email: String,
@@ -30,41 +27,93 @@ cors({
 });
 
 router.post("/login", async (req, res) => {
-  console.log("this is the login page");
-  // const { id, password } = req.body;
-  // if (!id || !password) {
-  //   res.status(400).json({ Notfilled: true });
-  // }
+  try {
+    const password = req.body.password;
+    const id = req.body.id;
 
-  // let user = await Admin.findOne({ id });
+    if (!id || !password) {
+      res.status(400).json({ Notfilled: true });
+      return; // added return to exit the function if fields are not filled
+    }
 
-  // const token = await user.generateAuthToken();
+    const User = await Admin.findOne({ id });
 
-  // if (user) {
-  //   console.log("User found");
+    if (User) {
+      console.log("User found");
 
-  //   let pass = await Admin.findOne({ password });
+      const pass = await Admin.findOne({ password });
 
-  //   if (pass) {
-  //     console.log("You are in ");
+      if (pass) {
+        console.log("Password matched");
 
-  //     let entry = await Admin.findOne({ token });
+        let token = jwt.sign({ _id: User._id }, process.env.SECRET_KEY);
 
-  //     if (token) {
-  //       console.log("come in man");
+        await Admin.updateOne({ id: id }, { $set: { tokens: token } });
 
-  //       res.cookie("jwt", token);
+        res.cookie("jwt", token, {
+          httpOnly: true,
+          // secure: false,
+          expires: new Date(Date.now() + 99* 99* 99 * 60000),
+        });
 
-  //       return res.redirect("https://www.google.com/");
-  //     } else {
-  //       console.log("no token is incorrect ");
-  //     }
-  //   } else {
-  //     console.log("Inavlid Credentials");
-  //   }
-  // } else {
-  //   console.log("Inavlid Credentials");
-  // }
+        res.status(200).json({ isAuthenticated: true });
+      } else {
+        console.log("Password not matched");
+        res.status(400).json({ Authenticated: false });
+      }
+    } else {
+      res.status(400).json({ Authenticate: false });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.get("/register", async (req, res) => {
+  console.log("this is the register page");
+  const { id, password } = req.body;
+
+  if (!id || !password) {
+    res.status(400).json({ Notfilled: true });
+  }
+
+  let user = await Admin.findOne({ id });
+
+  if (user) {
+    console.log("User already exists");
+    res.status(400).json({ AlreadyExists: true });
+  } else {
+    const user = new Admin({ id, password });
+    await user.save();
+    res.status(200).json({ Registered: true });
+  }
+});
+
+router.get("/Admin", async (req, res) => {
+  try {
+    if (req.cookies.jwt) {
+      // const token = data.token;
+      const verify = jwt.verify(req.cookies.jwt, process.env.SECRET_KEY);
+      if (verify) {
+        console.log("this is the admin page");
+        res.status(200).json({ isToken: true });
+      } else {
+        res.status(400).json({ isToken: false });
+      }
+    } else {
+      res.status(400).json({ isToken: false });
+      console.log("no token found");
+    }
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({
+        error: "Internal Server Error",
+        isToken: false
+      });
+  }
 });
 
 router.post("/Contact", async (req, res) => {

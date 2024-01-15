@@ -20,6 +20,7 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
+app.use(cookieParser());
 
 //this is for contact page and this will only take contacts
 
