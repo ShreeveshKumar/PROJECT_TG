@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { decrement, increment } from "../../store/features/orderSlice";
 
 const DishOrder = ({name,index}) => {
   const count = useSelector((store) => store);
-  console.log(count);
+  // console.log(count);
 
   return (
     <div
@@ -15,9 +15,9 @@ const DishOrder = ({name,index}) => {
     >
       <h1>{name}</h1>
       <div>
-        <button type="button" onClick={()=>dispatch(increment())}>
+        {/* <button type="button" onClick={()=>dispatch(increment())}> */}
           <KeyboardArrowUpRoundedIcon />
-        </button>
+        {/* </button> */}
         <h2 className="flex justify-center">0</h2>
         <button type="button" onClick={()=>(decrement())}>
           <KeyboardArrowDownRoundedIcon />

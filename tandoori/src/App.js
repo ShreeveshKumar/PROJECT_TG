@@ -41,7 +41,7 @@ function Rat() {
       <Route exact path="/Order/Admin" element={<Admin />} />
       <Route exact path="/order/Deliver/Confirm" element={<Confirm />} />
       <Route exact path="/Login" element={<Login />} />
-      <Route exact path="/admin-panel" element={<Admin />} />
+      <Route exact path="/Admin" element={<Admin />} />
 
       <Route exact path="*" element={<Error />} />
 

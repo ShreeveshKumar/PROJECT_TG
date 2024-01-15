@@ -1,27 +1,33 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Navbar from "../../Components/Navbar/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [id, setId] = useState(" ");
   const [password, setpassword] = useState(" ");
+  const navigate = useNavigate();
 
-  const RunThis = () => {
+  const RunThis = async () => {
     console.log(id, password);
 
-    axios
-      .post("http://localhost:4000/login", { id, password })
-      .then((response) => {
-        if (response.status === 200 && response.data.isAuthenticated === true) {
-          window.alert("Login Successful");
-          console.log("Login Successful");
-        } else if (response.status === 400) {
-          window.alert("Invalid Login");
-          alert("wrong password");
-        }
+    try {
+      const response = await fetch("http://localhost:4000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        credentials: "include",
+        body: JSON.stringify({ id, password }),
+      });
 
-      })
-      .catch((error) => console.log("error is ", error));
+      const data = await response.json();
+      if (data.isAuthenticated) {
+        navigate("/Admin");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
