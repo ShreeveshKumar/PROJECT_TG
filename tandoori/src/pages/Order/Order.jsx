@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Order.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -6,56 +6,47 @@ import { Link } from "react-router-dom";
 import DishOrder from "../../Components/Dish_order/DishOrder";
 import { food_order } from "../../data";
 import { Icon2 } from "../../Icons";
-// import { state } from "../../store/store";
-
-
-// const socket = io('https://localhost:4000');
-
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../store/features/orderSlice";
+// import { clearCart } from "../../store/features/orderSlice";
 
 const Order = () => {
   return (
     <div>
       <Navbar />
-      <Order_search />
+      <OrderSearch />
       <DishDrop />
       <OrderBar />
     </div>
   );
 };
 
-const Order_search = () => {
-  // const 
+const OrderSearch = () => {
+  const { amount ,total} = useSelector((state) => state.order);
 
   return (
-    <span className="flex justify-center  ">
-      <span>
-        <input
-          type="text"
-          name=""
-          id="dish_input"
-          placeholder="Search by dish name..."
-          className=" "
-        />
-        <SearchIcon />
-      </span>
-      <span className="flex place-item-end">
-       <Icon2 /> 0
-      </span>
-    </span>
-  );
-};
-
-
+    <div className="flex justify-between m-5 ">
+      <div>Search bar here</div>
+      <div>total items {amount}</div>
+      <div>Cost Rs{total}</div>
+    </div>
+  )
+}
 
 const OrderBar = () => {
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <div className="flex inset-x-0 bottom-0 fixed align-middle justify-center  ">
         <div className="flex flex-wrap justify-center w-1/2 bg-yellow-400 text-black p-5">
-          <button className="" onClick={() => {
-          }}>Clear</button>
+          <button className="" onClick={() => dispatch(clearCart())}>
+          Clear
+          </button>
         </div>
-        <Link to="/Order/Deliver" className="flex flex-wrap w-1/2 justify-center align-middle text-black bg-sky-500 p-5">
+        <Link
+          to="/Order/Deliver"
+          className="flex flex-wrap w-1/2 justify-center align-middle text-black bg-sky-500 p-5"
+        >
           <button className="">Proceed</button>
         </Link>
       </div>
@@ -63,43 +54,31 @@ const OrderBar = () => {
   );
 };
 
-
 const DishDrop = () => {
- 
+  const { amount, cartItems, total } = useSelector((state) => state.order);
 
-  // const handleorder = () => {
-  //   fetch(linking, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Access-Control-Allow-Origin": "*",
-  //     },
-  //     body: JSON.stringify(Order),
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   });
-  // };
-
-  // if (amount < 1) {
-  //   return (
-  //     <div className="flex flex-col flex-wrap justify-center items-center text-3xl my-5">
-  //       <h1>Your Bag</h1>
-  //       <h2>IS EMPTY </h2>
-  //     </div>
-  //   )
-  // }
+  if (amount < 1) {
+    return (
+      <div className="flex flex-col flex-wrap justify-center items-center text-3xl my-5">
+        <h1>Your Bag</h1>
+        <h2>IS EMPTY </h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-3 mb-20">
-      {food_order.map((gru,index) => {
-          return <DishOrder key={gru.index} name={gru.name} amount={gru.amount} />
-        })
-      }
-    </div>
-  )
-}
+    <>
+      <div className="p-3 mb-20">
+        {cartItems.map((gru) => {
+          return <DishOrder key={gru.id} name={gru.name}/>
+        })}
+      </div>
 
 
 
+    </>
+
+  );
+};
 
 export default Order;

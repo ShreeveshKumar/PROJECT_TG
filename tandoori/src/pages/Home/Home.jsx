@@ -26,7 +26,7 @@ function Body() {
   return (
     <div>
       <div className="flex p-8 mt-10 bg-yellow-500 k text-white align-middle justify-center place-content-center">
-        <h3 className="px-2 py-2 text-black">
+        <h3 className="px-2 py-2 text-black ">
           LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN
         </h3>
         <Link to="/Order">
@@ -34,22 +34,23 @@ function Body() {
             type="button"
             className="mx-3 bg-red-900 px-2 py-2 rounded-xl "
           >
-            {" "}
-            Let's Start{" "}
+           
+            Let's Start
           </button>
         </Link>
       </div>
-      <div className="flex flex-wrap justify-evenly overflow-hidden">
-        <div className="flex align-middle justify-center font-bold font-comfortaa text-xl ">
-          <h1> The best food of Town is here</h1>
-        </div>
-        <div className="w-96">
-          <img
-            src="https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg"
-            alt="images_here"
-          />
-        </div>
-      </div>
+      <div className="flex flex-wrap justify-center items-center h-screen gap-10">
+  <div className="flex flex-col items-center font-bold font-comfortaa text-xl text-center">
+    <h1 className="text-2xl w-26 ">The best food of Town is here</h1>
+  </div>
+  <div className="w-96">
+    <img
+      src="https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg"
+      alt="images_here"
+    />
+  </div>
+</div>
+
     </div>
   );
 }
@@ -60,7 +61,11 @@ function Menu() {
       <h1 className="flex items-center justify-center text-4xl font-Textpos1">
         MENU
       </h1>
-      <h1>Veg</h1>
+      <div className="flex justify-between  ">
+
+      <h1 className="m-5 font-dancingScript text-4xl  ">Veg</h1>
+      <img src="https://w7.pngwing.com/pngs/274/7/png-transparent-green-leaf-leaf-logo-brand-plant-stem-folha-grass-green-line-thumbnail.png" alt="veg " className="w-12 h-10 m-5  "/>
+      </div>
       <section className="flex flex-wrap justify-evenly overflow-hidden">
         {apetite_veg.map((fooog) => {
           return (
@@ -73,7 +78,11 @@ function Menu() {
           );
         })}
         </section>
-      <h1>Non-Veg</h1>
+        <div className="flex justify-between  ">
+
+<h1 className="m-5 font-dancingScript text-4xl  ">Non-Veg</h1>
+<img src="https://static.vecteezy.com/system/resources/previews/030/806/288/non_2x/chicken-curry-icon-design-vector.jpg" alt="veg " className="w-12 h-10 m-5  "/>
+</div>
       <section className="flex flex-wrap justify-evenly overflow-hidden">
         {apetite_nonveg.map((fooog) => {
           return (
@@ -92,11 +101,11 @@ function Menu() {
 
 function NewRate() {
   return (
-    <div className="border-2 border-slate-950 p-10 rate_card_centre">
+    <div className="border-0 border-slate-950 m-10 ">
       <h1 className="flex text-5xl font-comfortaa items-center justify-center">
         Ratings
       </h1>
-      <div className="flex flex-col font-comfortaa font-bold">
+      <div className="flex flex-wrap font-comfortaa font-bold place-content-center gap-5 ">
         {vary_reviews.map((readme) => {
           return <Rate_cards key={readme.index} ratings={readme.view} />;
         })}
@@ -135,7 +144,7 @@ function Vdish({ index, review, source2 }) {
 function Bdish() {
   return (
     <div className="">
-      <h1 className="text-5xl font-comfortaa ">Best FOODS</h1>
+      <h1 className="text-5xl font-sans ">Best FOODS</h1>
       <section>
         {best_review.map((frog) => {
           return (

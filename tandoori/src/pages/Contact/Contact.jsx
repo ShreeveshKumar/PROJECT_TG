@@ -62,7 +62,7 @@ const ContactAddress = () => {
   };
 
   return (
-    <div className="flex flex-col items-center text-xl font-bold gap-y-5 font-comfortaa md:text-lg sm:text-sm ">
+    <div className="flex flex-col items-center text-xl font-bold gap-y-5 font-comfortaa md:text-lg sm:text-sm m-10 ">
       <h4 className="text-xl"> Contact us ... </h4>
 
       <h3>Abhishek Chaudhary</h3>

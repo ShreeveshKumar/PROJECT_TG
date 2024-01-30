@@ -4,12 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Admin from './pages/Admin/Admin';
+import { Provider } from 'react-redux';
+import { state } from './store/store'
+import {store} from './store/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
-    <App />
-  </>
+  <React.Fragment>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function

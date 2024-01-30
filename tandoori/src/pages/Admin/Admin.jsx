@@ -23,6 +23,7 @@ const Admin = () => {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
           },
+          credentials: "include",
         });
         const data = await response.json();
         console.log(data);
@@ -34,14 +35,42 @@ const Admin = () => {
       }
     };
     fetchdata();
+
+
+
+
   }, [navigate]);
+
+  const fetchorders = async () => {
+
+    console.log('button clicked');
+    try {
+      const orders = await fetch("http://localhost:4000/giveorders", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+
+
+      });
+
+      const data = await orders.json();
+      console.log(data.address);
+
+    } catch (err) {
+
+      console.log(err);
+    }
+  }
 
   return (
     <div className="flex place-content-center items-center bg-slate-900 font-comfortaa w-screen h-screen text-white ">
       <button
         type="button"
         className="border-2 border-black text-white bg-black"
-        
+        onClick={() => fetchorders()}
+
       >
         Refresh
       </button>
@@ -50,6 +79,7 @@ const Admin = () => {
           <div className="">{order_no}`</div>
           <div className="bg-neon-900 ">Cash on Delivery</div>
         </div>
+        <div>{address}</div>
 
         <div className="border-r-2 m-3  ">
           <div>order name </div>
