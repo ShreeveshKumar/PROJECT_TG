@@ -8,6 +8,7 @@ import { food_order } from "../../data";
 import { Icon2 } from "../../Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../store/features/orderSlice";
+import Emptycard from "../../Components/EmptyCard.js/Emptycard";
 // import { clearCart } from "../../store/features/orderSlice";
 
 const Order = () => {
@@ -59,10 +60,7 @@ const DishDrop = () => {
 
   if (amount < 1) {
     return (
-      <div className="flex flex-col flex-wrap justify-center items-center text-3xl my-5">
-        <h1>Your Bag</h1>
-        <h2>IS EMPTY </h2>
-      </div>
+      <Emptycard />
     );
   }
 

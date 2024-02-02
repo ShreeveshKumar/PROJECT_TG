@@ -15,32 +15,22 @@ export const orderSlice = createSlice({
   reducers: {
     clearCart: (state) => {
       state.cartItems = [];
+      state.amount = 0;
     },
 
-    increase: (state, {payload}) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id);
-      if(cartItem){
-        cartItem.amount += 1;
-      }
+    increase: (state, action) => {
+      console.log(action.payload);
     },
+  },
 
-
-    decrease:(state,{payload})=>{
-      
-      const cartItem = state.cartItems.find((item)=>item.id === payload.id);
-      if(cartItem){
-        cartItem.amount -= 1;
-      }
+  decrease: (state, { payload }) => {
+    const cartItem = state.cartItems.find((item) => item.id === payload.id);
+    if (cartItem) {
+      cartItem.amount -= 1;
     }
-
   },
 });
 
-
-
-
-
 export default orderSlice.reducer;
 
-
-export const { clearCart,increase,decrease } = orderSlice.actions;
+export const { clearCart, increase, decrease } = orderSlice.actions;
