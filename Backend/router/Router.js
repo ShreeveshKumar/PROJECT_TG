@@ -5,8 +5,6 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 
-router.use(cookieParser());
-
 const HandleUser = mongoose.Schema({
   id: String,
   password: String,
@@ -22,9 +20,22 @@ const object2 = new mongoose.Schema({
 
 const Product = mongoose.model("Data", object2);
 
+const giveorder = mongoose.Schema({
+  order_no: Number,
+  address: String,
+  food_order: String,
+  mobile_no: String,
+  payment_option: String,
+
+})
+
+const UserOrder = mongoose.model("orders", giveorder);
+
 cors({
   origin: "*",
 });
+
+router.use(cookieParser());
 
 router.post("/login", async (req, res) => {
   try {
@@ -50,10 +61,10 @@ router.post("/login", async (req, res) => {
 
         await Admin.updateOne({ id: id }, { $set: { tokens: token } });
 
-        res.cookie("jwt", token, {
+        res.cookie("token", token, {
           httpOnly: true,
           // secure: false,
-          expires: new Date(Date.now() + 99* 99* 99 * 60000),
+          expires: new Date(Date.now() + 99 * 99 * 99 * 60000),
         });
 
         res.status(200).json({ isAuthenticated: true });
@@ -91,10 +102,13 @@ router.get("/register", async (req, res) => {
 });
 
 router.get("/Admin", async (req, res) => {
+  const token = req.cookies.token;
+  console.log(token);
+
   try {
-    if (req.cookies.jwt) {
-      // const token = data.token;
-      const verify = jwt.verify(req.cookies.jwt, process.env.SECRET_KEY);
+    if (token) {
+      const verify = jwt.verify(token, process.env.SECRET_KEY);
+      console.log(verify);
       if (verify) {
         console.log("this is the admin page");
         res.status(200).json({ isToken: true });
@@ -107,12 +121,10 @@ router.get("/Admin", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res
-      .status(500)
-      .json({
-        error: "Internal Server Error",
-        isToken: false
-      });
+    res.status(500).json({
+      error: "Internal Server Error",
+      isToken: false,
+    });
   }
 });
 
@@ -122,6 +134,24 @@ router.post("/Contact", async (req, res) => {
   await data.save();
   return data;
 });
+
+router.get("/giveorders", async (req, res) => {
+  try {
+    
+  let data = await UserOrder.find();
+    res.status(200).json(data);
+
+    if (!data) {
+      console.log(console.log('no users found'));
+      res.status(404).json({ message:'no users found'});
+    }
+
+  } catch (err) {
+    console.log(err)
+  };
+    
+
+})
 
 router.get("/", (req, res) => {
   res.send("this is the admin page");

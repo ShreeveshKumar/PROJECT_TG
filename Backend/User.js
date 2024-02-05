@@ -31,4 +31,10 @@ app.post("/Contact", Router); // for the contact page and sending the mail and m
 
 app.get("/Admin", Router); // for the admin page and sending the data to the database
 
+app.get("/giveorders", Router);
+
+app.post('/placeorder', (req, res) => {
+  console.log(req.body);
+})
+
 app.listen(PORT);

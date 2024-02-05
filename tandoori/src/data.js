@@ -30,7 +30,6 @@ const apetite_nonveg = [
   },
 ];
 
-
 const apetite_veg = [
   {
     index: 1,
@@ -66,7 +65,8 @@ const best_review = [
       "Tandoori Gali restaurant ka Butter Chicken, maza aagaya! Iske swaad mein hai ek khaas magic, dil se bhar kar khaya maine.",
     source2:
       "https://www.cookwithkushi.com/wp-content/uploads/2016/07/best_butter_chicken_murgh_makhani_recipe.jpg",
-    description: " 🍛🔥 A classic Indian dish, Butter Chicken is a rich and flavorful curry featuring tender pieces of chicken cooked in a creamy tomato-based sauce.🌶️🍽️ ",
+    description:
+      " 🍛🔥 A classic Indian dish, Butter Chicken is a rich and flavorful curry featuring tender pieces of chicken cooked in a creamy tomato-based sauce.🌶️🍽️ ",
   },
   {
     index: 2,
@@ -75,7 +75,8 @@ const best_review = [
       "Tandoori Gali restaurant ki Khadhai Paneer, dil ko choo gayi! Uski masaledar khushboo aur swaad, lajawaab hai, fir se khane ka mann kar raha hai.",
     source2:
       "https://www.sanjanafeasts.co.uk/wp-content/uploads/2020/01/Restaurant-Style-Shahi-Paneer.jpg",
-    description: "🧀👑 A royal Indian delicacy, Shahi Paneer is a regal dish that features cubes of paneer (Indian cottage cheese) immersed in a creamy and aromatic gravy.",
+    description:
+      "🧀👑 A royal Indian delicacy, Shahi Paneer is a regal dish that features cubes of paneer (Indian cottage cheese) immersed in a creamy and aromatic gravy.",
   },
 ];
 
@@ -121,30 +122,32 @@ const food_order = [
   {
     id: 1,
     name: "Butter Chicken",
+    amount: 1,
   },
   {
     id: 2,
     name: "Afghani Chicken",
-
+    amount: 1,
   },
   {
     id: 3,
     name: "Chicken Curry",
-
+    amount: 1,
   },
   {
     id: 4,
     name: "Chicken Changezi",
-
+    amount: 1,
   },
   {
     id: 5,
     name: "Chicken fry",
-
+    amount: 1,
   },
   {
     id: 6,
     name: "Chicken Tikka",
+    amount: 1,
   },
 ];
 

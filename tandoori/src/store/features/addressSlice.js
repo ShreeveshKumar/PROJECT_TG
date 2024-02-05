@@ -1,39 +1,21 @@
-import React from "react";
 import { createSlice } from "@reduxjs/toolkit";
-import { create } from "@mui/material/styles/createTransitions";
+import { Deliver_question } from "../../data";
 
+const initialState = {
+  questions: Deliver_question,
+  name: " ",
+  mobile_no: " ",
+  house_no: " ",
+  full_address: " ",
+};
 
-
-const initialState =
-{
-    name: " ",
-    mobile_no: " ",
-    address: " ",
-    full_address: " ",
-}
-
-
-
-export const postSlice = createSlice({
-    name: "post",
+export const addressSlice = createSlice({
+  name: "address",
     initialState,
-    reducers: {
-        name: (state, { payload }) => {
-            const username = payload.name;
-
-        },
-        mobile_no:(state,{payload}) =>{
-            const mobile_no = payload.mobile_no;
-
-        },
-        address:(state,{payload})=>{
-            const state.address = payload.address;
-        },
-        full_address:(state,{payload})=>{
-            const state.full_address = payload.full_address;
-        }
-
-
+    name: (state, action)=>{
+    //   const {text} = 
     }
+  
+});
 
-})
+export default addressSlice.reducer;
