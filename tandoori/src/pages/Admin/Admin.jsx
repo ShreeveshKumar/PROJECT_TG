@@ -40,6 +40,7 @@ const Admin = () => {
       });
 
       var data = await orders.json();
+      console.log(data);
       setdata(data);
       console.log(rawdata);
     } catch (err) {
@@ -47,8 +48,6 @@ const Admin = () => {
     }
   };
 
-
-  
   return (
     <div className="flex flex-col place-content-center items-center bg-slate-900 font-comfortaa w-screen h-screen text-white ">
       <div className="flex justify-around gap-10 ">
@@ -64,31 +63,24 @@ const Admin = () => {
       </div>
 
       <div className="bg-slate-400 w-4/5 p-5  m-5 ">
-        
         {Object.keys(rawdata).map((key) => (
           <CartCard
             key={key}
-            order_no={rawdata[key].order_no}
-            address={rawdata[key].address}
+            order_no={rawdata[key]._id}
+            name={rawdata[key].name}
+            houseNo={rawdata[key].houseNo}
+            fulladdress={rawdata[key].fulladdress}
             food_order={rawdata[key].food_order}
-            mobile_no={rawdata[key].mobile_no}
-            payment_option={rawdata[key].payment_option}
+            mobile={rawdata[key].mobile}
+            items={rawdata[key].items}
           />
-        ))
-        }
+        ))}
       </div>
     </div>
   );
 };
 
-const CartCard = ({
-  order_no,
-  address,
-  food_order,
-  mobile_no,
-  payment_option,
-}) => {
-
+const CartCard = ({ name, houseNo, order_no, fulladdress, mobile }) => {
   const DeleteOrder = async ({ order_no }) => {
     try {
       await fetch(`http://localhost:4000/giveOrder/${order_no}`, {
@@ -98,24 +90,26 @@ const CartCard = ({
           "Access-Control-Allow-Origin": "*",
         },
       });
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  
   return (
     <div className="m-5 border-2 p-5  border-black text-black ">
-      <div>Order no: {order_no}</div>
-      <div>Address: {address}</div>
-      <div>Food:{food_order}</div>
-      <div>Mobile_no: {mobile_no}</div>
-      <div>Payment: {payment_option} </div>
+      <div>Order_ID: {order_no}</div>
+      <div>Name: {name}</div>
+      <div>House_No: {houseNo}</div>
+      <div>Address: {fulladdress}</div>
+      <div>Mobile No: {mobile}</div>
 
       <div className="flex gap-5 justify-around ">
-        <button className="bg-blue-600 p-2 rounded-md " onClick={()=>DeleteOrder()}>Cancel  Order</button>
-
+        <button
+          className="bg-blue-600 p-2 rounded-md "
+          onClick={() => DeleteOrder()}
+        >
+          Cancel Order
+        </button>
       </div>
     </div>
   );

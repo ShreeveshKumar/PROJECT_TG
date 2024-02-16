@@ -41,8 +41,8 @@ export const orderSlice = createSlice({
         cost += element.amount;
         amt += element.amount * 250;
       });
-      state.amount = amt;
-      state.total = cost;
+      state.amount = cost;
+      state.total = amt;
     },
   },
 });

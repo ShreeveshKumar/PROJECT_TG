@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Delivery.css";
-import { Deliver_question, food_order } from "../../data";
 import { Link } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import { UseSelector, useSelector } from "react-redux";
@@ -27,6 +26,7 @@ const DeliverAddress = () => {
   });
 
   const cartItems = useSelector((store) => store.order.cartItems);
+  const amount = useSelector((store) => store.order.amount);
 
   const [final, setfinal] = useState({ info, cartItems });
 
@@ -36,12 +36,17 @@ const DeliverAddress = () => {
   }, [info]);
 
   const sendOrder = async () => {
-    try {
-      const response = axios.post("http://localhost:4000/placeorder", final);
-      console.log("data sent successfully", response.data);
-    } catch (err) {
-      console.log(err);
+    if (amount >= 0) {
+      try {
+        const response = axios.post("http://localhost:4000/placeorder", final);
+        console.log("data sent successfully");
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      console.log("select a valid amount");
     }
+    return 0;
   };
 
   return (
