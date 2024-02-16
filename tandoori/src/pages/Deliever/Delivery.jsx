@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Delivery.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import { UseSelector, useSelector } from "react-redux";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Delivery = () => {
   return (
     <React.Fragment>
+      <ToastContainer />
       <Navbar />
       <DeliverAddress />
       <Footer />
@@ -27,6 +30,7 @@ const DeliverAddress = () => {
 
   const cartItems = useSelector((store) => store.order.cartItems);
   const amount = useSelector((store) => store.order.amount);
+  const navigate = useNavigate();
 
   const [final, setfinal] = useState({ info, cartItems });
 
@@ -36,15 +40,26 @@ const DeliverAddress = () => {
   }, [info]);
 
   const sendOrder = async () => {
-    if (amount >= 0) {
+    if (
+      amount >= 0 &&
+      info.name &&
+      info.mobile &&
+      info.houseNo &&
+      info.fullAddress
+    ) {
       try {
-        const response = axios.post("http://localhost:4000/placeorder", final);
+        axios.post("http://localhost:4000/placeorder", final);
         console.log("data sent successfully");
+        toast("order sent");
+        navigate("/Order/Deliver/Confirm");
       } catch (err) {
         console.log(err);
       }
     } else {
       console.log("select a valid amount");
+      alert("please fill in every detail ");
+      toast("Please fill in every detail ! ");
+      navigate("/Order");
     }
     return 0;
   };
@@ -64,6 +79,7 @@ const DeliverAddress = () => {
             value={info.name}
             onChange={(e) => setInfo({ ...info, name: e.target.value })}
           />
+          {/* Add other input fields with headings and make them required */}
           <input
             type="text"
             placeholder="Mobile Number"
@@ -105,15 +121,13 @@ const DeliverAddress = () => {
       </div>
 
       <div className="flex justify-center mt-8">
-        <Link to="/Order/Deliver/Confirm">
-          <button
-            type="button"
-            className="bg-blue-500 py-2 px-6 rounded-md text-white transition-all hover:bg-blue-700 focus:outline-none"
-            onClick={() => sendOrder()}
-          >
-            Next
-          </button>
-        </Link>
+        <button
+          type="button"
+          className="bg-blue-500 py-2 px-6 rounded-md text-white transition-all hover:bg-blue-700 focus:outline-none"
+          onClick={sendOrder}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

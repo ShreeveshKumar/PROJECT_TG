@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Admin = () => {
   const [rawdata, setdata] = useState([]);
@@ -50,6 +52,7 @@ const Admin = () => {
 
   return (
     <div className="flex flex-col place-content-center items-center bg-slate-900 font-comfortaa w-screen h-screen text-white ">
+      <ToastContainer />
       <div className="flex justify-around gap-10 ">
         <h1>Click to refresh </h1>
 
@@ -81,13 +84,13 @@ const Admin = () => {
 };
 
 const CartCard = ({ name, houseNo, order_no, fulladdress, mobile }) => {
-  const DeleteOrder = async ({ order_no }) => {
+  const DeleteOrder = async () => {
+    toast("order deleted ");
     try {
-      await fetch(`http://localhost:4000/giveOrder/${order_no}`, {
+      await fetch(`http://localhost:4000/deleteOrder/${order_no}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
         },
       });
     } catch (err) {
