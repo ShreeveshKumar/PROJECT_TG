@@ -191,6 +191,16 @@ router.post("/placeorder", async (req, res) => {
   }
 });
 
+router.delete("/deleteOrder/:id", async (req, res) => {
+  const itemId = req.params.id;
+  const deldata = await TakeOrder.findByIdAndDelete({ _id: itemId });
+  if (deldata) {
+    console.log("deleted");
+  } else {
+    console.log("not deleted");
+  }
+});
+
 router.get("/", (req, res) => {
   res.send("this is the admin page");
 });

@@ -35,4 +35,6 @@ app.get("/giveorders", Router);
 
 app.post('/placeorder', Router);
 
+app.delete('/deleteOrder/:id', Router);
+
 app.listen(PORT);
