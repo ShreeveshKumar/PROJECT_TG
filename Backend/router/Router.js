@@ -20,14 +20,29 @@ const object2 = new mongoose.Schema({
 
 const Product = mongoose.model("Data", object2);
 
+const Order = mongoose.Schema({
+  name: String,
+  mobile: String,
+  houseNo: String,
+  fullAddress: String,
+  option: Boolean,
+  items: [
+    {
+      name: String,
+      amount: Number,
+    },
+  ],
+});
+
+const TakeOrder = mongoose.model("Orders", Order);
+
 const giveorder = mongoose.Schema({
   order_no: Number,
   address: String,
   food_order: String,
   mobile_no: String,
   payment_option: String,
-
-})
+});
 
 const UserOrder = mongoose.model("orders", giveorder);
 
@@ -137,21 +152,44 @@ router.post("/Contact", async (req, res) => {
 
 router.get("/giveorders", async (req, res) => {
   try {
-    
-  let data = await UserOrder.find();
+    let data = await TakeOrder.find();
     res.status(200).json(data);
 
     if (!data) {
-      console.log(console.log('no users found'));
-      res.status(404).json({ message:'no users found'});
+      console.log(console.log("no users found"));
+      res.status(404).json({ message: "no users found" });
     }
-
   } catch (err) {
-    console.log(err)
-  };
-    
+    console.log(err);
+  }
+});
 
-})
+router.post("/placeorder", async (req, res) => {
+  try {
+    console.log(req.body);
+    const { name, mobile, houseNo, fullAddress } = req.body.info;
+
+    const cartItems = req.body.cartItems;
+
+    const orderItems = cartItems.map((item) => ({
+      name: item.name,
+      amount: item.amount,
+    }));
+
+    const saveorder = await TakeOrder.create({
+      name: name,
+      mobile: mobile,
+      houseNo: houseNo,
+      fullAddress: fullAddress,
+      items: orderItems,
+    });
+    await saveorder.save();
+    res.json({ message: "order sent" });
+    res.status(200);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 router.get("/", (req, res) => {
   res.send("this is the admin page");

@@ -33,8 +33,6 @@ app.get("/Admin", Router); // for the admin page and sending the data to the dat
 
 app.get("/giveorders", Router);
 
-app.post('/placeorder', (req, res) => {
-  console.log(req.body);
-})
+app.post('/placeorder', Router);
 
 app.listen(PORT);
