@@ -9,22 +9,17 @@ const Admin = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/Admin", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          credentials: "include",
-        });
-        const data = await response.json();
-        console.log(data);
-        if (!data.isToken) {
-          navigate("/login");
-        }
-      } catch (err) {
-        console.log(err);
+      const response = await fetch("http://localhost:4000/Admin", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await response.json();
+      console.log(data);
+      if (!data.isToken) {
+        navigate("/login");
       }
     };
     fetchdata();
@@ -83,7 +78,7 @@ const Admin = () => {
   );
 };
 
-const CartCard = ({ name, houseNo, order_no, fulladdress, mobile }) => {
+const CartCard = ({ name, houseNo, order_no, fulladdress, mobile, items }) => {
   const DeleteOrder = async () => {
     toast("order deleted ");
     try {
@@ -98,13 +93,22 @@ const CartCard = ({ name, houseNo, order_no, fulladdress, mobile }) => {
     }
   };
 
+  console.log(items[0]);
+
   return (
-    <div className="m-5 border-2 p-5  border-black text-black ">
+    <div className="m-5 border-2 p-5  border-black text-black  ">
       <div>Order_ID: {order_no}</div>
       <div>Name: {name}</div>
       <div>House_No: {houseNo}</div>
       <div>Address: {fulladdress}</div>
       <div>Mobile No: {mobile}</div>
+      <div className="flex flex-wrap gap-3 ">
+        <div>Dish Name</div>
+        <div>Amount</div>
+      </div>
+      {items.map((rope) => {
+        return <Smallordercard name={rope.name} amount={rope.amount} />;
+      })}
 
       <div className="flex gap-5 justify-around ">
         <button
@@ -113,6 +117,17 @@ const CartCard = ({ name, houseNo, order_no, fulladdress, mobile }) => {
         >
           Cancel Order
         </button>
+      </div>
+    </div>
+  );
+};
+
+const Smallordercard = ({ name, amount }) => {
+  return (
+    <div>
+      <div className="flex flex-wrap gap-3 ">
+        <div>{name}</div>
+        <div>{amount}</div>
       </div>
     </div>
   );

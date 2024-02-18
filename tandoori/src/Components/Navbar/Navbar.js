@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Icon1 } from "../../Icons";
+import { HomeIcon } from "../../Icons";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -11,10 +12,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-between m-5 p-10 font-comfortaa text-xl relative align-middle">
+    <div className="flex flex-wrap justify-between m-5 p-10 font-comfortaa text-xl relative align-middle items-center">
       <section className="">
         <Link to="/">
-          <button className="text-2xl font-extrabold p-2">Tandoori Gali</button>
+          <button className="text-2xl font-extrabold p-2"><HomeIcon /></button>
         </Link>
       </section>
 
@@ -30,7 +31,7 @@ const Navbar = () => {
         </Link>
       </section>
 
-      <div className="md:hidden absolute top-16 right-5 z-50">
+      <div className="md:hidden absolute top-16 right-5 z-50 items-center">
         <button className="text-2xl" onClick={toggleMenu}>
           <Icon1 />
         </button>
